@@ -51,7 +51,7 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <form method="POST" action="{{ url_for('signup') }}" onsubmit="return validatePasswords()">
+        <form method="POST" action="{{ url_for('signup') }}" onsubmit="return validatePasswords()" style="display: flex; flex-direction: column; align-items: center;">
             <input type="text" placeholder="Enter your name" id="name" name="name" required><br><br>
             <input type="password" placeholder="Enter your password" id="pass1" name="password" required><br><br>
             <input type="password" placeholder="Confirm your password" id="pass2" required><br>
