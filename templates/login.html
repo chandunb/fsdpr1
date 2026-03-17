@@ -1,80 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
-            display:flex;
-            align-items:center;
-            justify-content:center;
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: lightblue;
         }
-        .container{
+
+        .container {
             background-color: white;
-            padding: 25px 20px 0px 20px;
+            padding: 25px 20px 25px 20px;
+            box-sizing: border-box;
             justify-content: center;
             border: 2px;
             box-shadow: 0 0 10px black;
-            width: 250px;
-            height: 300px;
+            width: 90%;
+            max-width: 300px;
+            min-height: 300px;
             border-radius: 20px;
             text-align: center;
             transition: all 2s;
         }
-        input{
+
+        input {
             height: 40px;
+            width: 90%;
+            max-width: 200px;
+            box-sizing: border-box;
             font-size: 20px;
             text-align: center;
             border-radius: 25px;
         }
-        #submit{
+
+        #submit {
             border-radius: 5px;
             background-color: lightgreen;
             cursor: pointer;
-            
-        }
-    h2{
-        animation-name: logincolor;
-        animation-duration: 1s;
-        animation-iteration-count: infinite;
 
-    }
-
-    @keyframes logincolor {
-        from{
-            color: pink;
-            color: yellow;
         }
-        to{
-            color: blue;
-            color: green;
-        }
-        
-    }
 
-     
-        
+        h2 {
+            animation-name: logincolor;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+
+        }
+
+        @keyframes logincolor {
+            from {
+                color: pink;
+                color: yellow;
+            }
+
+            to {
+                color: blue;
+                color: green;
+            }
+
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Login</h2>
         {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <p style="color: {% if category == 'error' %}red{% else %}green{% endif %};">{{ message }}</p>
-                {% endfor %}
-            {% endif %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <p style="color: {% if category == 'error' %}red{% else %}green{% endif %};">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
         {% endwith %}
-        <form method="POST" action="{{ url_for('login') }}">
-            <input type="text" placeholder="Enter your name" name="name" required><br><br>
-            <input type="password" placeholder="Enter your password" name="password" required><br><br>
+        <form method="POST" action="{{ url_for('login') }}" autocomplete="off">
+            <input type="text" placeholder="Enter your name" name="name" autocomplete="off" required><br><br>
+            <input type="password" placeholder="Enter your password" name="password" autocomplete="new-password" required><br><br>
             <input type="submit" value="submit" id="submit"><br>
         </form>
-       <p id="new">new user ? <a href="{{ url_for('signup') }}">sign up</a></p>
-        
+        <p id="new">new user ? <a href="{{ url_for('signup') }}">sign up</a></p>
+
     </div>
 </body>
+
 </html>
